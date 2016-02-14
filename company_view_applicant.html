@@ -28,7 +28,7 @@
         <div class="col-md-10 col-md-offset-1">
 	<div class="form-group">
 	<label for="inputAge">Sex:</label>
-   <select name="Sex">
+   <select name="sex">
     <option value="male">Male</option>
     <option value="female">Female</option>
   </select>
@@ -109,6 +109,68 @@
 		    // error is a Parse.Error with an error code and message.
 		  }
 		});
+
+
+		 $( "#form" ).submit(function( event ) {
+         event.preventDefault();
+
+         var sex = $('#sex').val();
+         var age = $('#age').val();
+
+         var currentUser;
+	    Parse.User.current().fetch({
+	      success: function(user){
+	        currentUser = user;
+	      },
+	      error: function(error){
+	        window.location.assign("sign_in.html");
+	      }
+	    }); 
+	    var id = window.location.search.substring(1);
+	    var Job = Parse.Object.extend("Job");
+		var query = new Parse.Query(Job);
+		query.get(id, {
+		  success: function(object) {
+		    // The object was retrieved successfully.
+		    var AppliedJob = Parse.Object.extend("Applied_Job");
+		    var query = new Parse.Query(AppliedJob);
+		    query.equalTo("job", object);
+		    query.include("applicant");
+			query.find({
+			  success: function(applicants) {
+			    // The count request succeeded. Show the count
+			    $("#progress").remove();
+			    if(applicants.length === 0){
+			    	alert("nothing");
+			    	return;
+			    }
+			    for (var i = 0; i < applicants.length; i++) {
+
+			    	applicant = applicants[i].get("applicant");
+			    	if (applicant.get("sex") == sex){
+			    		var data = '<a href="#" class="list-group-item">';
+					  data +=   '<h3 class="list-group-item-heading">' + applicant.get("name") + '</h3>';
+					  data +=     '<p class="list-group-item-text">' + applicant.get("about") + '</p>';
+					  data +=   '</a>';
+			    	$("#name").append(data);
+
+			    	}
+			    	
+			    }
+			  },
+			  error: function(error) {
+			    // The request failed
+
+			  }
+			});
+		  },
+		  error: function(object, error) {
+		    // The object was not retrieved successfully.
+		    // error is a Parse.Error with an error code and message.
+		  }
+		});
+
+     });
     });
   </script>
   </body>
