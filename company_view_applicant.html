@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+	<div class="page-header">
+	  <div class="text-center"><h1>Applicant lists</h1></div>
+	</div>
+	<form id="form" method="post">
+    <div class="text-center"><h4>Filter</h4></div>
+    <div id="job">
+	 <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+	<div class="form-group">
+	<label for="inputAge">Sex:</label>
+   <select name="Sex">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+            </div> 
+      <div class="form-group">
+              <label for="inputAge">Age:</label>
+              <input id="age" type="number" class="form-control">
+            </div> 
+             </div> 
+              </div> 
+               </div> 
+        <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <button id="submit" type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+        </div>
+      </div>
+      </form>
+
+
+	<div id="progress" class="progress">
+	  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+	  </div>
+	  
+	</div>
+  	<div id="name" class="list-group">
+	</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  <script>
+    $("document").ready(function(){
+	    Parse.initialize("s6fq81gcCJWnBqwWd1igJohHdIcr5XETVilHV9gN", "NSjwUsbHFDwltJd1PqUsgeKazEx2dp9XeUc8Xg3c");
+
+	    var currentUser;
+	    Parse.User.current().fetch({
+	      success: function(user){
+	        currentUser = user;
+	      },
+	      error: function(error){
+	        window.location.assign("sign_in.html");
+	      }
+	    }); 
+	    var id = window.location.search.substring(1);
+	    var Job = Parse.Object.extend("Job");
+		var query = new Parse.Query(Job);
+		query.get(id, {
+		  success: function(object) {
+		    // The object was retrieved successfully.
+		    var AppliedJob = Parse.Object.extend("Applied_Job");
+		    var query = new Parse.Query(AppliedJob);
+		    query.equalTo("job", object);
+		    query.include("applicant");
+			query.find({
+			  success: function(applicants) {
+			    // The count request succeeded. Show the count
+			    $("#progress").remove();
+			    if(applicants.length === 0){
+			    	alert("nothing");
+			    	return;
+			    }
+			    for (var i = 0; i < applicants.length; i++) {
+			    	applicant = applicants[i].get("applicant");
+			    	var data = '<a href="#" class="list-group-item">';
+					  data +=   '<h3 class="list-group-item-heading">' + applicant.get("name") + '</h3>';
+					  data +=     '<p class="list-group-item-text">' + applicant.get("about") + '</p>';
+					  data +=   '</a>';
+			    	$("#name").append(data);
+			    }
+			  },
+			  error: function(error) {
+			    // The request failed
+
+			  }
+			});
+		  },
+		  error: function(object, error) {
+		    // The object was not retrieved successfully.
+		    // error is a Parse.Error with an error code and message.
+		  }
+		});
+    });
+  </script>
+  </body>
+</html>

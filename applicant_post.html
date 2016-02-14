@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <form id="form" method="post">
+    <div class="text-center"><h3>Education</h3></div>
+    <div id="education">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="text-right"><button id="addEducation" type="button" class="btn btn-primary">Add</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center"><h3>Certification</h3></div>
+    <div id="certification">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="text-right"><button id="addCertification" type="button" class="btn btn-primary">Add</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center"><h3>Language</h3></div>
+    <div id="language">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="text-right"><button id="addLanguage" type="button" class="btn btn-primary">Add</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center"><h3>Work Experience</h3></div>
+    <div id="workExperience">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="text-right"><button id="addWorkExp" type="button" class="btn btn-primary">Add</button></div>  
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <button id="submit" type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+      </div>
+    </div>
+  </form>
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  <script>
+    $("document").ready(function(){
+      Parse.initialize("s6fq81gcCJWnBqwWd1igJohHdIcr5XETVilHV9gN", "NSjwUsbHFDwltJd1PqUsgeKazEx2dp9XeUc8Xg3c");
+      var currentUser;
+      Parse.User.current().fetch({
+        success: function(user){
+          currentUser = user;
+        },
+        error: function(error){
+          window.location.assign("sign_in.html");
+        }
+      });  
+
+      var edTotal = 0;
+      $("#addEducation").click(function(){
+        edTotal++;
+        var ed = '<br>';
+        ed += '<div class="row">';
+        ed +=  '<div class="col-md-10 col-md-offset-1">';
+        ed +=      '<div class="form-group">';
+        ed +=        '<label for="inputLevel">Level:</label>';
+        ed +=        '<select id="edLevel' + edTotal + '" class="form-control">';
+        ed +=          '<option></option>';
+        ed +=          '<option>TK</option>';
+        ed +=          '<option>SD</option>';
+        ed +=          '<option>SMP</option>';
+        ed +=          '<option>SMA</option>';
+        ed +=          '<option>S1</option>';
+        ed +=        '</select>';
+        ed +=      '</div>';
+        ed +=      '<div class="form-group">';
+        ed +=        '<label for="inputInstitution">Institution Name:</label>';
+        ed +=        '<input id="edName' + edTotal + '" type="text" class="form-control">';
+        ed +=      '</div>';
+        ed +=      '<div class="form-group">';
+        ed +=        '<label for="inputStartDate">Start Date:</label>';
+        ed +=        '<input id="edStart' + edTotal + '" type="date" class="form-control">';
+        ed +=      '</div>';
+        ed +=      '<div class="form-group">';
+        ed +=        '<label for="inputEndDate">End Date:</label>';
+        ed +=        '<input id="edEnd' + edTotal + '" type="date" class="form-control">';
+        ed +=      '</div>' ;
+        ed +=  '</div>';
+        ed += '</div>';
+        $("#education").append(ed);
+      });
+
+      var certTotal = 0;
+      $("#addCertification").click(function(){
+        certTotal++;
+        var cert = '<br>';
+        cert += '<div class="row">';
+        cert +=   '<div class="col-md-10 col-md-offset-1">';
+        cert +=       '<div class="form-group">';
+        cert +=         '<label for="inputInstitution">Title:</label>';
+        cert +=         '<input id="certTitle' + certTotal + '" type="text" class="form-control">';
+        cert +=       '</div>';
+        cert +=       '<div class="form-group">';
+        cert +=         '<label for="inputLevel">Category:</label>';
+        cert +=         '<select id="certCategory' + certTotal + '" class="form-control">';
+        cert +=           '<option></option>';
+        cert +=           '<option>IT</option>';
+        cert +=           '<option>Hospitality</option>';
+        cert +=           '<option>Leisure</option>';
+        cert +=           '<option>Barista</option>';
+        cert +=           '<option>Food</option>';
+        cert +=         '</select>';
+        cert +=       '</div>';
+        cert +=       '<div class="form-group">';
+        cert +=         '<label for="inputStartDate">Date Taken:</label>';
+        cert +=         '<input id="certTaken' + certTotal + '" type="date" class="form-control">';
+        cert +=       '</div>';
+        cert +=       '<div class="form-group">';
+        cert +=         '<label for="inputInstitution">Publisher Body::</label>';
+        cert +=         '<input id="certPublisher' + certTotal + '" type="text" class="form-control">';
+        cert +=       '</div>';
+        cert +=   '</div>';
+        cert += '</div>';
+        
+        $("#certification").append(cert);
+      });
+
+      var langTotal = 0;
+      $("#addLanguage").click(function(){
+        langTotal++;
+        var lang = '<br>';
+        lang += '<div class="row">';
+        lang +=   '<div class="col-md-10 col-md-offset-1">';
+        lang +=       '<div class="form-group">';
+        lang +=         '<label for="inputInstitution">Language:</label>';
+        lang +=         '<input id="lang' + langTotal + '" type="text" class="form-control">';
+        lang +=       '</div>';
+        lang +=       '<div class="form-group">';
+        lang +=         '<label for="inputLevel">Level:</label>';
+        lang +=         '<select id="langLevel' + langTotal + '" class="form-control">';
+        lang +=           '<option></option>';
+        lang +=           '<option>Beginner</option>';
+        lang +=           '<option>Fair</option>';
+        lang +=           '<option>Good</option>';
+        lang +=         '</select>';
+        lang +=       '</div>';
+        lang +=   '</div>';
+        lang += '</div>';
+        $("#language").append(lang);
+      });
+
+      var workTotal = 0;
+      $("#addWorkExp").click(function(){
+        workTotal++;
+        var work = '<br>';
+        work += '<div class="row">';
+        work +=   '<div class="col-md-10 col-md-offset-1">';
+        work +=       '<div class="form-group">';
+        work +=         '<label for="inputCName">Company Name:</label>';
+        work +=         '<input id="workCompany' + workTotal + '" type="text" class="form-control">';
+        work +=       '</div>';
+        work +=       '<div class="form-group">';
+        work +=         '<label for="inputIndustry">Industry:</label>';
+        work +=         '<select id="workIndustry' + workTotal + '" class="form-control">';
+        work +=           '<option></option>';
+        work +=           '<option>1</option>';
+        work +=           '<option>2</option>';
+        work +=           '<option>3</option>';
+        work +=           '<option>4</option>';
+        work +=           '<option>5</option>';
+        work +=         '</select>';
+        work +=       '</div>  ';
+        work +=       '<div class="form-group">';
+        work +=         '<label for="inputStartDate">Start Date:</label>';
+        work +=         '<input id="workStart' + workTotal + '" type="date" class="form-control">';
+        work +=       '</div>';
+        work +=       '<div class="form-group">';
+        work +=         '<label for="inputEndDate">End Date:</label>';
+        work +=         '<input id="workEnd' + workTotal + '" type="date" class="form-control">';
+        work +=       '</div>';
+        work +=       '<div class="form-group">';
+        work +=         '<label for="inputRole">Role:</label>';
+        work +=         '<input id="workRole' + workTotal + '" type="text" class="form-control">';
+        work +=       '</div>';
+        work +=       '<div class="form-group">';
+        work +=         '<label for="inputJobDesc">Job Description:</label>';
+        work +=         '<textarea id="workDesc' + workTotal + '" class="form-control" rows="3"></textarea>';
+        work +=       '</div>';
+        work +=   '</div>';
+        work += '</div>';
+        $("#workExperience").append(work);
+      });
+
+
+     $( "#form" ).submit(function( event ) {
+         event.preventDefault();
+         var btn = $("#submit").button("loading");
+         var saveObjects = new Array();
+         var ApplicantProfile = Parse.Object.extend("Applicant_Profile");
+         var query = new Parse.Query(ApplicantProfile);
+         query.get(currentUser.get("app_profile").id, {
+          success: function(result) {
+           var applicantProfile = result;
+           // Education
+           while(edTotal >= 1){
+             var Education = Parse.Object.extend("Education");
+             var education = new Education();
+             var edName = $("#edName" + edTotal).val();
+             var edLevel = $("#edLevel" + edTotal).val();
+             var edStart = new Date($("#edStart" + edTotal).val());
+             var edEnd = new Date($("#edEnd" + edTotal).val());
+             edTotal--;
+
+             education.set("institution", edName);
+             education.set("level", edLevel);
+             education.set("start_date", edStart);
+             education.set("end_date", edEnd);
+             education.set("applicant", applicantProfile);
+
+             saveObjects.push(education);
+             
+           }
+           // Certification
+           while(certTotal >= 1){
+            var Certification = Parse.Object.extend("Certification");
+            var certification = new Certification();
+            var certTitle = $("#certTitle" + certTotal).val();
+            var certCategory = $("#certCategory" + certTotal).val();
+            var certTaken = new Date($("#certTaken" + certTotal).val());
+            var certPublisher = $("#certPublisher" + certTotal).val();
+            certTotal--;
+
+            certification.set("title", certTitle);
+            certification.set("category", certCategory);
+            certification.set("date_taken", certTaken);
+            certification.set("publisher_body", certPublisher);
+            certification.set("applicant", applicantProfile);
+
+            saveObjects.push(certification);
+
+           }
+           // Language
+           while(langTotal >= 1){
+            var Language = Parse.Object.extend("Language");
+            var language = new Language();
+            var lang = $("#lang" + langTotal).val();
+            var langLevel = $("#langLevel" + langTotal).val();
+            langTotal--;
+
+            language.set("language", lang);
+            language.set("level", langLevel);
+            language.set("applicant", applicantProfile);
+            
+            saveObjects.push(language);
+
+           }
+           // Work Experience
+           while(workTotal >= 1){
+            var WorkExperience = Parse.Object.extend("Work_Experience");
+            var workExperience = new WorkExperience();
+            var workCompany = $("#workCompany" + workTotal).val();
+            var workIndustry = $("#workIndustry" + workTotal).val();
+            var workStart = new Date($("#workStart" + workTotal).val());
+            var workEnd = new Date($("#workEnd" + workTotal).val());
+            var workRole = $("#workRole" + workTotal).val();
+            var workDesc = $("#workDesc" + workTotal).val();
+            workTotal--;
+
+            workExperience.set("company", workCompany);
+            workExperience.set("industry", workIndustry);
+            workExperience.set("start_date", workStart);
+            workExperience.set("end_date", workEnd);
+            workExperience.set("role", workRole);
+            workExperience.set("job_desc", workDesc);
+            workExperience.set("applicant", applicantProfile);
+
+            saveObjects.push(workExperience);
+
+           }
+           Parse.Object.saveAll(saveObjects, {
+            success: function(object){
+              alert("all saved");
+              window.location.assign("applicant_activities.html");
+            },
+            error: function(user, error){
+              alert("Error: " + error.code + " " + error.message);
+              btn.button("reset");
+              return;
+            }
+           });
+
+          },
+          error: function(object, error) {
+            alert("Error: " + error.code + " " + error.message);
+            btn.button("reset");
+            return;
+          }
+        });
+       });
+    });
+  </script>
+  </body>
+</html>

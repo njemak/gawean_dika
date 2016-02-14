@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <form id="form" method="post">
+    <div class="text-center"><h3>Sign In yuk</h3></div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="form-group">
+              <label for="inputInstitution"><span class="text-danger">*</span>Username:</label>
+              <input id="username" type="text" class="form-control">
+              <p class="hidden">Email can not be empty</p>
+            </div>
+            <div class="form-group">
+              <label for="inputInstitution"><span class="text-danger">*</span>Password:</label>
+              <input id="password" type="password" class="form-control">
+              <p class="hidden">Password can not be empty</p>
+            </div>
+            <small>Didn't have account yet? <a href="sign_up.html">Signup.</a></small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <button id="submit" type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+        </div>
+      </div>
+  </form>
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  <script>
+    $("document").ready(function(){
+      Parse.initialize("s6fq81gcCJWnBqwWd1igJohHdIcr5XETVilHV9gN", "NSjwUsbHFDwltJd1PqUsgeKazEx2dp9XeUc8Xg3c");
+      var error = false;
+      $( "#form" ).submit(function( event ) {
+        event.preventDefault();
+        if($("#username").val() == ""){
+          $("#username").parent().attr("class", "form-group has-error");
+          $("#username").next().attr("class", "text-danger");
+          error = true;
+        } else{
+          $("#username").parent().attr("class", "form-group");
+          $("#username").next().attr("class", "hidden");
+        }
+        if($("#password").val() == ""){
+          $("#password").parent().attr("class", "form-group has-error");
+          $("#password").next().attr("class", "text-danger");
+          error = true;
+        } else{
+          $("#password").parent().attr("class", "form-group");
+          $("#password").next().attr("class", "hidden");
+        }
+        if(error){
+          error = false;
+          return;
+        }
+        var btn = $("#submit").button("loading");
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        Parse.User.logIn(username, password, {
+          success: function(user) {
+            // Do stuff after successful login.
+            var type = user.get("type");
+            //alert("Success " + type);
+            if(type === "Applicant"){
+              window.location.assign("applicant_activities.html");
+            } else if(type === "Business"){
+              window.location.assign("company_activities.html");
+            } else{
+              alert("This user doesn't have any type");
+            }
+          },
+          error: function(user, error) {
+            // Show the error message somewhere and let the user try again.
+            switch (error.code) {
+              case Parse.Error.INVALID_SESSION_TOKEN:
+                alert("Another user has logged in, trying to log out now");
+                Parse.User.logOut();
+                break;
+            }
+            btn.button("reset");
+            alert("Error: " + error.code + " " + error.message);
+          }
+        });
+      });
+    });
+  </script>
+  </body>
+</html>
