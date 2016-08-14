@@ -4,6 +4,8 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
+    "deploy": "gcloud preview app deploy app.yaml",
+    "lint": "jshint --exclude-path=.gitignore .",
     "test": "npm run lint",
     "pretest": "jshint ."
   },
