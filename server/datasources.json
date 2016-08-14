@@ -1,0 +1,19 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongodb_dev": {
+    "url": "mongodb://admin:dika18()@ds011419.mlab.com:11419/gawean",
+    "name": "mongodb_dev",
+    "defaultForType": "mongodb",
+    "connector": "loopback-connector-mongodb"
+  },
+  "myfile": {
+    "name": "myfile",
+    "connector": "loopback-component-storage",
+    "provider": "amazon",
+    "key": "110d9846c3d65a55243b",
+    "keyId": "t5HcEnY2it6awtMax/p1oyAQ6geS9rA1bXs+7qQ9"
+  }
+}

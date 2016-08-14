@@ -1,0 +1,175 @@
+<header class="nav">
+      <ul class="nav__list">
+        <span class="nav__logo"><a href="#"><img src="assets/img/logo.png"></a></span>
+        <li><a ui-sref="home">Cara Kerja</a></li>
+        <li><a ui-sref="workspace">Tempat Gawe</a></li>
+        <li><a href="#">Bisnis</a></li>
+        <li><a ui-sref="acount-panel">Kontak</a></li>
+        <li><a zf-open="signIn">Masuk</a></li>
+        <li><a ng-click="Logout()">Keluar</a></li>
+      </ul>
+    </header>
+<section class="home">
+      <div class="home__content">
+        <h1 class="home__title">UNTUK MASA DEPAN YANG LEBIH CERAH</h1>
+        <h2 class="home__subtitle">Raih mimpimu sekarang bersama Gawean!</h2>
+        <a href="#" class="btn btn__action btn--transparent">Mulai!</a>
+      </div>
+    </section>
+    <section class="subsection bg--white">
+      <div class="subsection__content wrapper">
+        <h1 class="subsection__title">Cara Kerja</h1>
+        <div class="carakerja__widget">
+          <img class="carakerja__icon" src="assets/img/icon_placeholder.png">
+          <p class="carakerja__title">Buat Resume</p>
+          <p class="carakerja__description">Buat resume gawean kamu sebagus mungkin dan lengkapi dengan skill serta pengalaman kerja kamu</p>
+        </div>
+        <div class="carakerja__widget">
+          <img class="carakerja__icon" src="assets/img/icon_placeholder.png">
+          <p class="carakerja__title">Cari Tempat Gawe</p>
+          <p class="carakerja__description">Jelajahi tempat gawe di sekitarmu dan cari tempat gawe yang sesuai</p>
+        </div>
+        <div class="carakerja__widget">
+          <img class="carakerja__icon" src="assets/img/icon_placeholder.png">
+          <p class="carakerja__title">Langsung Gawe!</p>
+          <p class="carakerja__description">Lamar ke tempat gawe pilihanmu, raihlah mimpimu bersama Gawean!</p>
+        </div>
+      </div>
+    </section>
+    <section class="subsection bg--gray">
+      <div class="subsection__content">
+        <h1 class="subsection__title">Tempat Gawe</h1>
+        <div class="tempatgawe__highlight">
+          <div class="row">
+            <div class="tempatgawe__item large-8 medium-8 columns">
+              <a href="#">
+                <img class="tempatgawe__image" src="assets/img/img_holysmoke.png">
+                <span class="tempatgawe__icon"></span>
+                <p class="tempatgawe__title">Holy Smokes</p>
+              </a>
+            </div>
+            <div class="tempatgawe__item large-4 medium-4 columns">
+              <a href="#">
+                <img class="tempatgawe__image" src="assets/img/img_paopao.png">
+                <span class="tempatgawe__icon"></span>
+                <p class="tempatgawe__title">Paopao</p>
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="tempatgawe__item large-4 medium-4 columns">
+              <a href="#">
+                <img class="tempatgawe__image" src="assets/img/img_holycrab.png">
+                <span class="tempatgawe__icon"></span>
+                <p class="tempatgawe__title">Holy Crab</p>
+              </a>
+            </div>
+            <div class="tempatgawe__item large-4 medium-4 columns">
+              <a href="#">
+                <img class="tempatgawe__image" src="assets/img/img_manhattan.png">
+                <span class="tempatgawe__icon"></span>
+                <p class="tempatgawe__title">Manhattan Barbershop</p>
+              </a>
+            </div>
+            <div class="tempatgawe__item large-4 medium-4 columns">
+              <a href="#">
+                <img class="tempatgawe__image" src="assets/img/img_kanawa.png">
+                <span class="tempatgawe__icon"></span>
+                <p class="tempatgawe__title">Kanawa<br>Coffee &amp; Munch</p>
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="tempatgawe__item large-4 medium-4 columns">
+              <a href="#">
+                <img class="tempatgawe__image" src="assets/img/img_hgourmet.png">
+                <span class="tempatgawe__icon"></span>
+                <p class="tempatgawe__title">H Gourmet</p>
+              </a>
+            </div>
+            <div class="tempatgawe__item large-8 medium-8 columns">
+              <a href="#">
+                <img class="tempatgawe__image" src="assets/img/img_goodsdept.png">
+                <span class="tempatgawe__icon"></span>
+                <p class="tempatgawe__title">The Goods Dept</p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn btn__action btn--orange">Lihat Semua</a>
+      </div>
+    </section>
+    <section class="subsection ">
+      <div class="subsection__content wrapper">
+        <h1 class="subsection__title">Daftar Sekarang</h1>
+        <div class="subsection__form">
+          <form role="form">
+            <div class="row">
+              <div class="medium-12 large-12 columns">
+                <input type="text" placeholder="Nama Lengkap" ng-model="formInfo.Name">
+                <span ng-show="nameRequired">{{nameRequired}}</span>
+              </div>
+              <div class="medium-12 large-12 columns">
+                <input type="email" placeholder="Email" ng-model="formInfo.Email">
+                <span ng-show="emailRequired">{{emailRequired}}</span>
+              </div>
+              <div class="medium-12 large-12 columns">
+                <input type="password" placeholder="Password" ng-model="formInfo.Password">
+                <span ng-show="passwordRequired">{{passwordRequired}}</span>
+              </div>
+              <div class="medium-12 large-12 columns">
+                <input type="password" placeholder="Ketik Ulang Password" ng-model="formInfo.PasswordRepeat"> 
+                <span ng-show="passwordRepeatRequired">{{passwordRepeatRequired}}</span>
+              </div>
+              
+              <button type="submit" class="btn btn__action btn--orange " ng-click="Register()">Daftar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+<div zf-modal="" id="signIn" animation-in="slideInDown" animation-out="slideInUp" class="large">
+      <div class="row">
+        <div class="small-12 columns">
+        <form role="form">
+          <div class="modalbox__title">Masuk ke Gawean</div>
+            <div class="form-group">
+              <input type="text" placeholder="Email" ng-model="formInfo.Email">
+              <span ng-show="nameRequired">{{nameRequired}}</span>
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" ng-model="formInfo.Password">
+              <span ng-show="passwordRequired">{{passwordRequired}}</span>
+            </div>
+            <div class="row">
+              <div class="small-6 columns">
+                <div class="form-group">
+                  <div class="input--group text-left">
+                    <div class="input--inline">
+                      <input id="check1" type="checkbox" name="check" value="check1">
+                        <label class="checkbox" for="check1">Ingat Saya</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="small-6 columns">
+                <div class="text-right"><a href="#">Lupa Password?</a></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn__reveal btn__full btn--green" ng-click="Login()">Masuk</button>
+            </div>
+            </form>
+            <div class="form-group">
+              <button class="btn btn__reveal btn__full btn--facebook"><i class="fa fa-facebook-official"></i>Masuk dengan Facebook</button>
+            </div>
+          <div class="text-center mt30">Belum punya akun Gawean?<br>Daftar Yuk!</div>
+          <div class="text-center mt10 mb20">
+            <button class="btn btn__action btn--blue">Daftar</button>
+          </div>
+        </div>
+        </div>
+        <button zf-close="" class="close-button" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>

@@ -1,0 +1,233 @@
+<header class="nav">
+      <ul class="nav__list">
+        <span class="nav__logo"><a href="#"><img src="assets/img/logo.png"></a></span>
+        <li><a ui-sref="home">Cara Kerja</a></li>
+        <li><a ui-sref="workspace">Tempat Gawe</a></li>
+        <li><a href="#">Bisnis</a></li>
+        <li><a ui-sref="acount-panel">Kontak</a></li>
+        <li><a zf-open="signIn">Masuk</a></li>
+        <li><a ng-click="Logout()">Keluar</a></li>
+      </ul>
+    </header>
+<section class="company" style="background-image: url({{data.link_logo_header}})">
+	<div class="company__content">
+		<h1 class="company__title">{{data.name}}</h1>
+		<h2 class="company__subtitle">{{data.type}}</h2>
+		<div class="company__icon">
+			<div class="company__icon__image" style="background-image:url({{data.link_logo}});">
+			</div>
+			<div class="company__icon__social">
+				<a href="{{data.link_facebook}}"><i class="fa fa-facebook"></i></a>
+				<a href="{{data.link_website}}"><i class="fa fa-globe"></i></a>
+				<a href="mailto:{{data.email}}"><i class="fa fa-envelope"></i></a>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="subsection bg--grey">
+	<div class="subsection__content wrapper">
+		<div class="row">
+			<div class="content large-4 columns">
+				<div class="content__title">Tentang Kami</div>
+				<div class="content__description">
+					<article>
+					<div  ng-repeat="about in data.about">
+					{{about}}
+					<br><br>
+					</div>
+					</article>
+				</div>
+
+			</div>
+			<div class="large-8 columns">
+				<slick ng-if="dataLoaded" init-onload="false" data="dataLoaded" slides-to-show="1" dots="true" class="gallery__carousel">
+					<div ng-repeat="item in data.list_link_slide">
+						<span>
+							<img ng-src="{{ item.imgSrc }}"/>
+						</span>
+						<span>{{ item.label }}</span>
+					</div>
+				</slick>
+					</div>
+				</div>
+				<div class="row mt30">
+					<div class="content large-12 columns">
+						<div class="content__title">Budaya Kerja</div>
+						<div class="content__description">
+							<article>
+							<div  ng-repeat="work_culture in data.work_culture">
+							{{work_culture}}
+							<br><br>
+							</div>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="subsection bg--gray nopadding">
+			<div class="subsection__content">
+				
+				<div class="video__link">
+					<a data-toggle="animatedModal10">
+						<div class="video__image" style="background-image:url({{data.link_youtube_thumbnail}})">
+							<div class="video__icon"><i class="fa fa-play-circle-o"></i></div>
+						</div>
+						
+					</a>
+				</div>
+
+				<!--tolong munculin modalnya ntar -->
+<!-- 				<div class="full reveal" id="animatedModal10" data-reveal data-close-on-click="true" data-animation-in="scale-in-up">
+					<div class="video__wrapper">
+						<iframe ng-src="data.link_youtube" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<button class="close-button" data-close aria-label="Close reveal" type="button">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div> -->
+			</div>
+		</section>
+		<section class="subsection bg--white">
+			<div class="subsection__content wrapper">
+				<div class="row">
+					<div class="large-8 columns">
+						<div class="location__map">
+							<img src="assets/img/map.png"/>
+						</div>
+					</div>
+					<div class="content large-4 columns">
+						<div class="content__title">Location</div>
+						<div class="content__description">
+							<div class="content__item"><i class="fa fa-home"></i>{{data.location_address}}</div>
+							<div class="content__item"><i class="fa fa-phone"></i>{{data.phone}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="subsection bg--gray">
+			<div class="subsection__content wrapper">
+				<div class="row">
+					<div class="small-12 columns">
+						<div class="testimonial__carousel">
+							
+							<slick ng-if="dataLoaded" init-onload="false" data="dataLoaded" slides-to-show="1" class="testimonial__item">
+							<div ng-repeat="item in data.testimony_list">
+								<div class="row valign-middle">
+									<div class="small-12 medium-4 columns">
+										<div class="testimonial__picture" style="background-image:url({{item.link_photo}});">
+										</div>
+									</div>
+									<div class="small-12 medium-8 columns">
+										<div class="testimonial__detail text-left">
+											<div class="detail__name">{{item.name}} 
+												<span class="detail__position">{{item.position}}</span>
+											</div>
+											<div class="detail__content">
+												{{item.description}}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</slick>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="subsection ">
+			<div class="subsection__content wrapper">
+				<h1 class="subsection__title">LAMAR GAWEAN</h1>
+				<div class="subsection__form">
+					<form>
+						<div class="form-group">
+							<div class="row">
+								<div class="small-12 columns">
+									<label class="form-group__title">Pilih posisi keinginanmu</label>
+								</div>
+								<div class="small-12 columns">
+									<select class="cs-select cs-skin-border text-smaller" ng-model="job_choice" ng-change="ShowJob()">
+										<option ng-repeat="item in data.job_list" value="{{$index}}"  >{{item.name}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="job__detail">
+							<div class="row">
+								<div class="small-12">
+									<div class="detail__title">Deskripsi Pekerjaan</div>
+									<ul class="detail__list">
+										<li ng-repeat="item in job_now.description">{{item}}</li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12">
+									<div class="detail__title">Kriteria Pelamar</div>
+									<ul class="detail__list">
+										<li ng-repeat="item in job_now.criteria">{{item}}</li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 text-center">
+									<button type="button" class="btn btn--blue btn__action" ng-click="ApplyJob()" ng-hide="jobavailable">Lamar! <i></i></button>
+
+								</div>
+								<div class="small-12 text-center" ng-show="jobavailable">
+								Anda sudah melamar di posisi ini
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+<div zf-modal="" id="signIn" animation-in="slideInDown" animation-out="slideInUp" class="large">
+      <div class="row">
+        <div class="small-12 columns">
+        <form role="form">
+          <div class="modalbox__title">Masuk ke Gawean</div>
+            <div class="form-group">
+              <input type="text" placeholder="Email" ng-model="formInfo.Email">
+              <span ng-show="nameRequired">{{nameRequired}}</span>
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" ng-model="formInfo.Password">
+              <span ng-show="passwordRequired">{{passwordRequired}}</span>
+            </div>
+            <div class="row">
+              <div class="small-6 columns">
+                <div class="form-group">
+                  <div class="input--group text-left">
+                    <div class="input--inline">
+                      <input id="check1" type="checkbox" name="check" value="check1">
+                        <label class="checkbox" for="check1">Ingat Saya</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="small-6 columns">
+                <div class="text-right"><a href="#">Lupa Password?</a></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn__reveal btn__full btn--green" ng-click="Login()">Masuk</button>
+            </div>
+            </form>
+            <div class="form-group">
+              <button class="btn btn__reveal btn__full btn--facebook"><i class="fa fa-facebook-official"></i>Masuk dengan Facebook</button>
+            </div>
+          <div class="text-center mt30">Belum punya akun Gawean?<br>Daftar Yuk!</div>
+          <div class="text-center mt10 mb20">
+            <button class="btn btn__action btn--blue">Daftar</button>
+          </div>
+        </div>
+        </div>
+        <button zf-close="" class="close-button" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>

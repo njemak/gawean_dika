@@ -1,0 +1,68 @@
+{
+  "name": "applicant_profile",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "fullname": {
+      "type": "string",
+      "required": true
+    },
+    "sex": {
+      "type": "string",
+      "required": true
+    },
+    "date_of_birth": {
+      "type": "date",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "profile_address",
+      "required": true
+    },
+    "education": {
+      "type": [
+        "profile_education"
+      ]
+    },
+    "experience": {
+      "type": [
+        "profile_experience"
+      ]
+    },
+    "language": {
+      "type": [
+        "profile_language"
+      ],
+      "required": false
+    },
+    "certificate": {
+      "type": "object"
+    },
+    "user_gawean_id": {
+      "type": "string",
+      "required": true
+    },
+    "job_list": {
+      "type": [
+        "custom_business_profile"
+      ]
+    },
+    "availabilitiy_list": {
+      "type": [
+        "availability"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

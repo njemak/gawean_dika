@@ -1,0 +1,31 @@
+{
+  "name": "custome_business_job",
+  "base": "Model",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "criteria": {
+      "type": [
+        "string"
+      ]
+    },
+    "description": {
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,50 @@
+{
+  "name": "business_job",
+  "base": "Model",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "criteria": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "applicant_list": {
+      "type": [
+        "custom_applicant_profile"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "language_needed": {
+      "type": [
+        "string"
+      ]
+    },
+    "availability_needed": {
+      "type": [
+        "availability"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

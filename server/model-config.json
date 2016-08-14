@@ -1,0 +1,120 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "user_gawean": {
+    "dataSource": "mongodb_dev",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "applicant_profile": {
+    "dataSource": "mongodb_dev",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "profile_address": {
+    "dataSource": "db",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "profile_education": {
+    "dataSource": "db",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "profile_experience": {
+    "dataSource": "db",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "profile_language": {
+    "dataSource": null,
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "business_job": {
+    "dataSource": "db",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "business_profile": {
+    "dataSource": "mongodb_dev",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "testimony": {
+    "dataSource": null,
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "custom_applicant_profile": {
+    "dataSource": null,
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "custom_business_profile": {
+    "dataSource": null,
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "custome_business_job": {
+    "dataSource": null,
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "availability": {
+    "dataSource": "db",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "storage": {
+    "dataSource": "myfile",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  }
+}

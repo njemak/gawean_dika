@@ -1,0 +1,48 @@
+{
+  "name": "custom_applicant_profile",
+  "base": "Model",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "address": {
+      "type": "profile_address"
+    },
+    "certificate": {
+      "type": "object"
+    },
+    "date_of_birth": {
+      "type": "date"
+    },
+    "education": {
+      "type": [
+        "profile_education"
+      ]
+    },
+    "experience": {
+      "type": [
+        "profile_experience"
+      ]
+    },
+    "fullname": {
+      "type": "string"
+    },
+    "language": {
+      "type": [
+        "profile_language"
+      ]
+    },
+    "phone": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

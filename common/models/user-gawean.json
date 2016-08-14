@@ -1,0 +1,35 @@
+{
+  "name": "user_gawean",
+  "base": "User",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "app_id": {
+      "type": "string"
+    },
+    "com_id": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "updatedAt": {
+      "type": "date"
+    },
+    "fullname": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

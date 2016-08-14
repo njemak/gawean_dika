@@ -1,0 +1,39 @@
+{
+  "name": "profile_address",
+  "base": "Model",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "town": {
+      "type": "string",
+      "required": true
+    },
+    "districts": {
+      "type": "string",
+      "required": true
+    },
+    "province": {
+      "type": "string",
+      "required": true
+    },
+    "full_address": {
+      "type": "string",
+      "required": true
+    },
+    "suburb": {
+      "type": "string",
+      "required": true
+    },
+    "postcode": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

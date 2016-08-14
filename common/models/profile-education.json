@@ -1,0 +1,39 @@
+{
+  "name": "profile_education",
+  "base": "Model",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "level": {
+      "type": "string",
+      "required": true
+    },
+    "major": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "period_year_end": {
+      "type": "number",
+      "required": true
+    },
+    "current": {
+      "type": "boolean",
+      "required": true
+    },
+    "period_year_start": {
+      "type": "number",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

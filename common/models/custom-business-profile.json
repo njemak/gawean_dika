@@ -1,0 +1,74 @@
+{
+  "name": "custom_business_profile",
+  "base": "Model",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "email": {
+      "type": "string"
+    },
+    "about": {
+      "type": [
+        "string"
+      ]
+    },
+    "job": {
+      "type": "custome_business_job"
+    },
+    "link_facebook": {
+      "type": "string"
+    },
+    "link_logo": {
+      "type": "string"
+    },
+    "link_logo_header": {
+      "type": "string"
+    },
+    "link_logo_thumbnail": {
+      "type": "string"
+    },
+    "link_website": {
+      "type": "string"
+    },
+    "link_youtube": {
+      "type": "string"
+    },
+    "link_youtube_thumbnail": {
+      "type": "string"
+    },
+    "list_link_slide": {
+      "type": [
+        "object"
+      ]
+    },
+    "location_address": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "testimony_list": {
+      "type": [
+        "testimony"
+      ]
+    },
+    "type": {
+      "type": "string"
+    },
+    "work_culture": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

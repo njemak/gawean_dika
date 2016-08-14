@@ -1,0 +1,23 @@
+{
+  "name": "profile_language",
+  "base": "Model",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "language": {
+      "type": "string",
+      "required": true
+    },
+    "level": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,112 @@
+
+<header class="nav">
+      <ul class="nav__list">
+        <span class="nav__logo"><a href="#"><img src="assets/img/logo.png"></a></span>
+        <li><a ui-sref="home">Cara Kerja</a></li>
+        <li><a ui-sref="workspace">Tempat Gawe</a></li>
+        <li><a href="#">Bisnis</a></li>
+        <li><a ui-sref="acount-panel">Kontak</a></li>
+        <li><a zf-open="signIn">Masuk</a></li>
+        <li><a ng-click="Logout()">Keluar</a></li>
+      </ul>
+    </header>
+		<section class="formsection bg--gray">
+			<div class="formsection__content wrapper">
+				<h1 class="formsection__title">Tempat Gawe</h1>
+				<div class="row align-center">
+					<form class="small-12 medium-8 columns">
+						<div class="form-group search__form">
+							<input type="text" placeholder="Cari">
+							<i class="fa fa-search"></i>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="small-12 medium-6 columns">
+									<label class="form-group__title">Kategori</label>
+									<select class="cs-select cs-skin-border text-smaller">
+										<option value="0">Kategori</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+								<div class="small-12 medium-6 columns">
+									<label class="form-group__title">Lokasi</label>
+									<select class="cs-select cs-skin-border text-smaller">
+										<option value="0">Lokasi</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="row small-up-1 medium-up-2 large-up-3">
+					<div class="column"  ng-repeat="company in allCompany">
+						<div class="item__workspace">
+							<a ui-sref="company({companyId: $index})">
+								<div class="item__image" style="background-image:url({{company.link_logo_thumbnail}}">
+								</div>
+								<div class="item__detail">
+									<div class="detail__name">{{company.name}}</div>
+									<div class="detail__more">{{company.type}}</div>
+								</div>
+								<div class="bg__overlay"></div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<a class="btn btn__action btn--orange mt30 ">Selanjutnya
+							<i class="fa fa-arrow-circle-down"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div zf-modal="" id="signIn" animation-in="slideInDown" animation-out="slideInUp" class="large">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="modalbox__title">Masuk ke Gawean</div>
+          <form>
+            <div class="form-group">
+              <input type="text" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password">
+            </div>
+            <div class="row">
+              <div class="small-6 columns">
+                <div class="form-group">
+                  <div class="input--group text-left">
+                    <div class="input--inline">
+                      <input id="check1" type="checkbox" name="check" value="check1">
+                        <label class="checkbox" for="check1">Ingat Saya</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="small-6 columns">
+                <div class="text-right"><a href="#">Lupa Password?</a></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn__reveal btn__full btn--green">Masuk</button>
+            </div>
+            <div class="form-group">
+              <button class="btn btn__reveal btn__full btn--facebook"><i class="fa fa-facebook-official"></i>Masuk dengan Facebook</button>
+            </div>
+          </form>
+          <div class="text-center mt30">Belum punya akun Gawean?<br>Daftar Yuk!</div>
+          <div class="text-center mt10 mb20">
+            <button class="btn btn__action btn--blue">Daftar</button>
+          </div>
+        </div>
+        </div>
+        <button zf-close="" class="close-button" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>

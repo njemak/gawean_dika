@@ -1,0 +1,522 @@
+<header class="nav">
+	<ul class="nav__list">
+        <span class="nav__logo"><a href="#"><img src="assets/img/logo.png"></a></span>
+        <li><a ui-sref="home">Cara Kerja</a></li>
+        <li><a ui-sref="workspace">Tempat Gawe</a></li>
+        <li><a href="#">Bisnis</a></li>
+        <li><a ui-sref="acount-panel">Kontak</a></li>
+        <li><a zf-open="signIn">Masuk</a></li>
+        <li><a ng-click="Logout()">Keluar</a></li>
+      </ul>
+</header>
+<section class="formsection bg--gray">
+	<div class="formsection__content wrapper">
+		<h1 class="formsection__title">Data Pribadi &amp; Resume</h1>
+		<div class="row">
+			<form class="large-12 columns">
+				<div class="row">
+					<div class="medium-8 large-8 columns">
+						<div class="row">
+							<div class="large-12 columns">
+								<div class="form-group">
+									<label class="form-group__title">Nama Lengkap</label>
+									<input type="text" placeholder="Name Lengkap" ng-model="data.fullname">
+								</div>
+								<div class="form-group">
+									<label class="form-group__title">Jenis Kelamin</label>
+									<div class="input--group text-left">
+										<div class="input--inline">
+											<input name="gender" type="radio" value="Male" id="pria" ng-model="data.sex">
+											<label class="radio" for="pria">Pria</label>
+										</div>
+										<div class="input--inline">
+											<input name="gender" type="radio" value="Female" id="wanita" ng-model="data.sex">
+											<label class="radio" for="wanita">Wanita</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="form-group__title">Tanggal Lahir</label>
+									<div class="row">
+										<div class="small-12 medium-7 large-7 columns">
+											<div class="row">
+												<div class="small-4 medium-4 large-4 columns">
+													<select class="cs-select cs-skin-border text-smaller" ng-model="day">
+														<!-- <option ng-repeat="option in dataOption.dayOption" value="{{option.id}}">{{option.name}}</option> -->
+														<option value="0" selected="selected">Tanggal</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="18">18</option>
+														<option value="19">19</option>
+														<option value="20">20</option>
+													</select>
+												</div>
+												<div class="small-4 medium-4 large-4 columns">
+													<select class="cs-select cs-skin-border text-smaller" ng-model="month">
+														<option value="0" selected="selected">Bulan</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="8">8</option>
+														<option value="9">9</option>
+													</select>
+												</div>
+												<div class="small-4 medium-4 large-4 columns">
+													<select class="cs-select cs-skin-border text-smaller" ng-model="year">
+														<option value="0" selected="selected">Tahun</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="1991">1991</option>
+														<option value="1992">1992</option>
+														<option value="1993">1993</option>
+														<option value="1994">1994</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group form-group--multirow">
+									<label class="form-group__title">Alamat Tempat Tinggal</label>
+									<div class="row">
+										<div class="small-12 medium-12 large-12 columns">
+											<select class="cs-select cs-skin-border" ng-model="data.address.province">
+												<option value="0" selected="selected">Provinsi</option>
+												<option value="Banten">Banten</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="small-12 medium-12 large-12 columns">
+											<select class="cs-select cs-skin-border" ng-model="data.address.town">
+												<option value="0" selected="selected">Kabupaten/Kota</option>
+												<option value="1">1</option>
+												<option value="Tangerang Selatan">Tangerang Selatan</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="small-12 medium-12 large-12 columns">
+											<select class="cs-select cs-skin-border" ng-model="data.address.districts">
+												<option value="0" selected="selected">Kecamatan</option>
+												<option value="1">1</option>
+												<option value="Serpong">Serpong</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="small-12 medium-12 large-12 columns">
+											<select class="cs-select cs-skin-border" ng-model="data.address.suburb">
+												<option value="0" selected="selected">Kelurahan/Desa</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="Lengkong Wetan">Lengkong Wetan</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="form-group__title">Alamat Lengkap</label>
+									<div class="row">
+										<div class="small-12 medium-12 large-12 columns">
+											<textarea rows="4" placeholder="Masukan Alamat Lengkap Kamu" ng-model="data.address.full_address"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="form-group__title">Telepon</label>
+									<input type="text" placeholder="Masukan nomor Telepon Kamu" ng-model="data.phone">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="medium-4 large-4 columns">
+						<div class="profile-picture">
+							<div class="profile-picture__placeholder">
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<a href="#" class="btn btn__action btn--orange ">Daftar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+<section class="formsection bg--white">
+	<div class="formsection__content wrapper">
+		<h1 class="formsection__title">Pendidikan</h1>
+		<div class="row">
+			<form class="large-12 columns">
+				<div class="form__box form__half bg--gray list__box mb20" ng-repeat="education in data.education" ng-hide="education.isHideEducation && isHideEducation">
+					<div class="row">
+						<div class="small-9 medium-9 large-9 columns">
+							<div class="list__detail">
+								<div class="detail__title">{{education.level}}</div>
+								<div class="detail__info ellipsis"><span>{{education.name}}</span>, <span>{{education.period_year_start}}</span>-<span>{{education.period_year_end}}</span><!-- Labschool Kebayoran, 2004-2007 --></div>
+							</div>
+						</div>
+						<div class="small-3 medium-3 large-3 columns">
+							<div class="list__action">
+								<ul>
+									<li><i class="fa fa-pencil-square-o" ng-click="EditEducation($index)"></i></li>
+									<li><i class="fa fa-trash" ng-click="DeleteEducation($index)"></i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form__box form__half bg--gray">
+					<div class="row">
+						<div class="large-12 columns">
+							<div class="form-group">
+								<label class="form-group__title">Tingkat Pendidikan</label>
+								<select class="cs-select cs-skin-border" ng-model="education.level">
+									<option value="0">Pilih Tingkat Pendidikan</option>
+									<option value="1">Tidak Sekolah</option>
+									<option value="SD">SD</option>
+									<option value="SMP">SMP</option>
+									<option value="SMA/SMK">SMA/SMK</option>
+									<option value="Diploma">Diploma</option>
+									<option value="Sarjana">Sarjana</option>
+									<option value="Magister">Magister</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="form-group__title">Jurusan</label>
+								<input type="text" placeholder="contoh: Perhotelan" ng-model="education.major">
+							</div>
+							<div class="form-group">
+								<label class="form-group__title">Nama Institusi</label>
+								<input type="text" placeholder="contoh: Universitas Bina Nusantara" ng-model="education.name">
+							</div>
+							<div class="form-group">
+								<label class="form-group__title">Periode</label>
+								<div class="row">
+									<div class="small-12 medium-7 large-7 columns">
+										<div class="row">
+											<div class="small-6 medium-6 large-6 columns">
+												<select class="cs-select cs-skin-border text-smaller" ng-model="education.period_year_start">
+													<option value="0">Mulai</option>
+													<option value="2009">2009</option>
+													<option value="2010">2010</option>
+													<option value="2011">2011</option>
+												</select>
+											</div>
+											<div class="small-6 medium-6 large-6 columns">
+												<select class="cs-select cs-skin-border text-smaller" ng-model="education.period_year_end">
+													<option value="0">Selesai</option>
+													<option value="2013">2013</option>
+													<option value="2014">2014</option>
+													<option value="2015">2015</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input--group text-left">
+									<div class="input--inline">
+										<input id="check1" type="checkbox" name="check" value="check1" ng-model="education.current">
+										<label class="checkbox" for="check1">Masih Sekolah Disini</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<button class="btn btn__action btn--green btn__big" type="button" ng-click="FillEducation()">Simpan</button>
+								<button class="btn btn__action btn--red btn__big" type="button" ng-click="CancelEducation()">Batal</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn--orange btn__square mt30">+</button>
+			</form>
+		</div>
+	</div>
+</section>
+<section class="formsection bg--gray">
+	<div class="formsection__content wrapper">
+		<h1 class="formsection__title">Pengalaman Gawe</h1>
+		<div class="row">
+			<form class="large-12 columns">
+				<div class="form__box bg--white list__box mb20" ng-repeat="experience in data.experience" ng-hide="experience.isHideExperience && isHideExperience">
+					<div class="row">
+						<div class="small-9 medium-9 large-9 columns">
+							<div class="list__detail">
+								<div class="detail__title">{{experience.position}}</div>
+								<div class="detail__location"><span>{{experience.name}}, {{experience.location}}</span></div>
+								<div class="detail__duration"><span>{{experience.month_start}} {{experience.year_start}} - {{experience.month_end}} {{experience.year_end}}</span></div>
+								<div class="detail__info">{{experience.description}}</div>
+							</div>
+						</div>
+						<div class="small-3 medium-3 large-3 columns">
+							<div class="list__action">
+								<ul>
+									<li><i class="fa fa-pencil-square-o" ng-click="EditExperience($index)"></i></li>
+									<li><i class="fa fa-trash" ng-click="DeleteExperience($index)"></i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form__box bg--white">
+					<div class="row">
+						<div class="large-12 columns">
+							<div class="form-group">
+								<label class="form-group__title">Jabatan</label>
+								<input type="text" placeholder="contoh: Barista" ng-model="experience.position">
+							</div>
+							<div class="row">
+								<div class="large-6 columns">
+									<div class="form-group">
+										<label class="form-group__title">Nama Tempat Gawe</label>
+										<input type="text" placeholder="contoh: Starbucks Coffee Pondok Indah Mall" ng-model="experience.name">
+									</div>
+								</div>
+								<div class="large-6 columns">
+									<div class="form-group">
+										<label class="form-group__title">Lokasi</label>
+										<input type="text" placeholder="contoh: DKI Jakarta" ng-model="experience.location">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="medium-7 large-7 columns">
+									<div class="row">
+										<div class="large-6 columns">
+											<div class="form-group">
+												<label class="form-group__title">Mulai Gawe</label>
+												<div class="row">
+													<div class="small-6 medium-6 large-6 columns">
+														<select class="cs-select cs-skin-border text-smaller" ng-model="experience.month_start">
+															<option value="0">Bulan</option>
+															<option value="April">April</option>
+															<option value="Mei">Mei</option>
+															<option value="Juni">Juni</option>
+														</select>
+													</div>
+													<div class="small-6 medium-6 large-6 columns">
+														<select class="cs-select cs-skin-border text-smaller" ng-model="experience.year_start">
+															<option value="0">Tahun</option>
+															<option value="2014">2014</option>
+															<option value="2015">2015</option>
+															<option value="2016">2016</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="large-6 columns">
+											<div class="form-group">
+												<label class="form-group__title">Kelar Gawe</label>
+												<div class="row">
+													<div class="small-6 medium-6 large-6 columns">
+														<select class="cs-select cs-skin-border text-smaller" ng-model="experience.month_end">
+															<option value="0">Bulan</option>
+															<option value="April">April</option>
+															<option value="Mei">Mei</option>
+															<option value="Juni">Juni</option>
+														</select>
+													</div>
+													<div class="small-6 medium-6 large-6 columns">
+														<select class="cs-select cs-skin-border text-smaller" ng-model="experience.year_end">
+															<option value="0">Tahun</option>
+															<option value="2014">2014</option>
+															<option value="2015">2015</option>
+															<option value="2016">2016</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input--group text-left">
+									<div class="input--inline">
+										<input id="check2" type="checkbox" name="check" value="check2" ng-model="experience.current" >
+										<label class="checkbox" for="check2">Masih Gawe Disini</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-group__title">Deskripsi</label>
+								<div class="row">
+									<div class="small-12 medium-12 large-12 columns">
+										<textarea rows="4" placeholder="Masukan Deksripsi Lengkap Gawean Kamu" ng-model="experience.description"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<button class="btn btn__action btn--green btn__big" type="button" ng-click="FillExperience()">Simpan</button>
+								<button class="btn btn__action btn--red btn__big" type="button" ng-click="CancelExperience()">Batal</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn--orange btn__square mt30">+</button>
+			</form>
+		</div>
+	</div>
+</section>
+<section class="formsection bg--white">
+	<div class="formsection__content wrapper">
+		<h1 class="formsection__title">Kefasihan Bahasa</h1>
+		<div class="row">
+			<form class="large-12 columns">
+				<div class="form__box form__half bg--gray list__box mb20" ng-repeat="language in data.language" ng-hide="language.isHideLanguage && isHideLanguage">
+					<div class="row">
+						<div class="small-9 medium-9 large-9 columns">
+							<div class="list__detail">
+								<div class="detail__title">{{language.language}}</div>
+								<div class="detail__level"><i class="bar__level level--1"></i></div>
+							</div>
+						</div>
+						<div class="small-3 medium-3 large-3 columns">
+							<div class="list__action">
+								<ul>
+									<li><i class="fa fa-pencil-square-o" ng-click="EditLanguange($index)"></i></li>
+									<li><i class="fa fa-trash"ng-click="DeleteLanguage($index)"></i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form__box form__half bg--gray">
+					<div class="row">
+						<div class="large-12 columns">
+							<div class="form-group">
+								<label class="form-group__title">Bahasa</label>
+								<select class="cs-select cs-skin-border" ng-model="language.language">
+									<option value="0">Pilih Bahasa</option>
+									<option value="Inggris">Bahasa Inggirs</option>
+									<option value="Indonesia">Bahasa Indonesia</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="form-group__title">Kefasihan</label>
+								<select class="cs-select cs-skin-border" ng-model="language.level">
+									<option value="0">Pilih Kefasihan</option>
+									<option value="1">Tingkat Dasar</option>
+									<option value="2">Profesional</option>
+									<option value="3">Bahasa Asli</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<button class="btn btn__action btn--green btn__big" type="button" ng-click="FillLanguage()">Simpan</button>
+								<button class="btn btn__action btn--red btn__big" type="button" ng-click="CancelLanguage()">Batal</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn--orange btn__square mt30">+</button>
+			</form>
+		</div>
+	</div>
+</section>
+<section class="formsection bg--gray formsection--padding50">
+	<div class="formsection__content wrapper">
+		<div class="certification-trigger">
+			<div class="row">
+				<form class="large-12 columns">
+					<button type="button" class="btn btn--blue btn__jumbo" slide-toggle="#certification-form">Tambahkan Sertifikasi <span class="light">(optional)</span></button>
+				</form>
+			</div>
+		</div>
+		<div id="certification-form" class="slideable certification-form">
+			<h1 class="formsection__title">Sertifikasi (Optional)</h1>
+			<div class="row">
+				<form class="large-12 columns">
+					<div class="form__box form__half bg--white">
+						<div class="row">
+							<div class="large-12 columns">
+								<div class="form-group">
+									<label class="form-group__title">Judul Sertifikat</label>
+									<input type="text" placeholder="contoh: Sertifikat Barista">
+								</div>
+								<div class="form-group">
+									<label class="form-group__title">Unggah Sertifikat</label>
+									<input type="file" name="pic" accept="image/*">
+								</div>
+								<div class="form-group">
+									<button class="btn btn__action btn--green btn__big" type="button">Simpan</button>
+									<button class="btn btn__action btn--red btn__big" type="button">Batal</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn--orange btn__square mt30">+</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="formsection bg--white">
+	<div class="formsection__content wrapper">
+		<h1 class="formsection__note">Jangan Lupa Untuk...</h1>
+		<span ng-show="formRequired">{{formRequired}}</span>
+		<div class="row">
+			<form class="large-12 columns">
+				<button type="button" class="btn btn--green btn__jumbo" ng-click="SubmitForm()">Simpan Resume!</button>
+			</form>
+		</div>
+	</div>
+</section>
+
+<div zf-modal="" id="signIn" animation-in="slideInDown" animation-out="slideInUp" class="large">
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="modalbox__title">Masuk ke Gawean</div>
+			<form>
+				<div class="form-group">
+					<input type="text" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<input type="password" placeholder="Password">
+				</div>
+				<div class="row">
+					<div class="small-6 columns">
+						<div class="form-group">
+							<div class="input--group text-left">
+								<div class="input--inline">
+									<input id="check1" type="checkbox" name="check" value="check1">
+									<label class="checkbox" for="check1">Ingat Saya</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="small-6 columns">
+						<div class="text-right"><a href="#">Lupa Password?</a></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<button class="btn btn__reveal btn__full btn--green">Masuk</button>
+				</div>
+				<div class="form-group">
+					<button class="btn btn__reveal btn__full btn--facebook"><i class="fa fa-facebook-official"></i>Masuk dengan Facebook</button>
+				</div>
+			</form>
+			<div class="text-center mt30">Belum punya akun Gawean?<br>Daftar Yuk!</div>
+			<div class="text-center mt10 mb20">
+				<button class="btn btn__action btn--blue">Daftar</button>
+			</div>
+		</div>
+	</div>
+	<button zf-close="" class="close-button" type="button">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>

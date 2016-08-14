@@ -1,0 +1,51 @@
+{
+  "name": "profile_experience",
+  "base": "Model",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "position": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "year_start": {
+      "type": "number",
+      "required": true
+    },
+    "current": {
+      "type": "boolean",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "year_end": {
+      "type": "number",
+      "required": false
+    },
+    "month_end": {
+      "type": "string",
+      "required": false
+    },
+    "month_start": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
